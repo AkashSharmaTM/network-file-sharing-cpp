@@ -1,0 +1,6 @@
+FROM ubuntu:22.04
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY . /app
+RUN make client
+CMD ["/app/client", "server", "9000"]
